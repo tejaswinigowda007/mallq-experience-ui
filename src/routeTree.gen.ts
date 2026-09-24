@@ -10,33 +10,234 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as EventsRouteImport } from './routes/events'
+import { Route as FoodRouteImport } from './routes/food'
+import { Route as OffersRouteImport } from './routes/offers'
+import { Route as ParkingRouteImport } from './routes/parking'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as StoresRouteImport } from './routes/stores'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
+import { Route as AdminEventsRouteImport } from './routes/admin.events'
+import { Route as AdminOffersRouteImport } from './routes/admin.offers'
+import { Route as AdminParkingRouteImport } from './routes/admin.parking'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminStoresRouteImport } from './routes/admin.stores'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as StoresStoreIdRouteImport } from './routes/stores.$storeId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoodRoute = FoodRouteImport.update({
+  id: '/food',
+  path: '/food',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OffersRoute = OffersRouteImport.update({
+  id: '/offers',
+  path: '/offers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParkingRoute = ParkingRouteImport.update({
+  id: '/parking',
+  path: '/parking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StoresRoute = StoresRouteImport.update({
+  id: '/stores',
+  path: '/stores',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEventsRoute = AdminEventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminOffersRoute = AdminOffersRouteImport.update({
+  id: '/offers',
+  path: '/offers',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminParkingRoute = AdminParkingRouteImport.update({
+  id: '/parking',
+  path: '/parking',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminStoresRoute = AdminStoresRouteImport.update({
+  id: '/stores',
+  path: '/stores',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AdminRoute,
+} as any)
+const StoresStoreIdRoute = StoresStoreIdRouteImport.update({
+  id: '/$storeId',
+  path: '/$storeId',
+  getParentRoute: () => StoresRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/events': typeof EventsRoute
+  '/food': typeof FoodRoute
+  '/offers': typeof OffersRoute
+  '/parking': typeof ParkingRoute
+  '/profile': typeof ProfileRoute
+  '/stores': typeof StoresRouteWithChildren
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/offers': typeof AdminOffersRoute
+  '/admin/parking': typeof AdminParkingRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/stores': typeof AdminStoresRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/stores/$storeId': typeof StoresStoreIdRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/events': typeof EventsRoute
+  '/food': typeof FoodRoute
+  '/offers': typeof OffersRoute
+  '/parking': typeof ParkingRoute
+  '/profile': typeof ProfileRoute
+  '/stores': typeof StoresRouteWithChildren
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/offers': typeof AdminOffersRoute
+  '/admin/parking': typeof AdminParkingRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/stores': typeof AdminStoresRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/stores/$storeId': typeof StoresStoreIdRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/events': typeof EventsRoute
+  '/food': typeof FoodRoute
+  '/offers': typeof OffersRoute
+  '/parking': typeof ParkingRoute
+  '/profile': typeof ProfileRoute
+  '/stores': typeof StoresRouteWithChildren
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/offers': typeof AdminOffersRoute
+  '/admin/parking': typeof AdminParkingRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/stores': typeof AdminStoresRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/stores/$storeId': typeof StoresStoreIdRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/events'
+    | '/food'
+    | '/offers'
+    | '/parking'
+    | '/profile'
+    | '/stores'
+    | '/admin/analytics'
+    | '/admin/events'
+    | '/admin/offers'
+    | '/admin/parking'
+    | '/admin/settings'
+    | '/admin/stores'
+    | '/admin/users'
+    | '/stores/$storeId'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/events'
+    | '/food'
+    | '/offers'
+    | '/parking'
+    | '/profile'
+    | '/stores'
+    | '/admin/analytics'
+    | '/admin/events'
+    | '/admin/offers'
+    | '/admin/parking'
+    | '/admin/settings'
+    | '/admin/stores'
+    | '/admin/users'
+    | '/stores/$storeId'
+    | '/admin'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/events'
+    | '/food'
+    | '/offers'
+    | '/parking'
+    | '/profile'
+    | '/stores'
+    | '/admin/analytics'
+    | '/admin/events'
+    | '/admin/offers'
+    | '/admin/parking'
+    | '/admin/settings'
+    | '/admin/stores'
+    | '/admin/users'
+    | '/stores/$storeId'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
+  EventsRoute: typeof EventsRoute
+  FoodRoute: typeof FoodRoute
+  OffersRoute: typeof OffersRoute
+  ParkingRoute: typeof ParkingRoute
+  ProfileRoute: typeof ProfileRoute
+  StoresRoute: typeof StoresRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +249,165 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/food': {
+      id: '/food'
+      path: '/food'
+      fullPath: '/food'
+      preLoaderRoute: typeof FoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offers': {
+      id: '/offers'
+      path: '/offers'
+      fullPath: '/offers'
+      preLoaderRoute: typeof OffersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parking': {
+      id: '/parking'
+      path: '/parking'
+      fullPath: '/parking'
+      preLoaderRoute: typeof ParkingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stores': {
+      id: '/stores'
+      path: '/stores'
+      fullPath: '/stores'
+      preLoaderRoute: typeof StoresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/analytics': {
+      id: '/admin/analytics'
+      path: '/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AdminAnalyticsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/events': {
+      id: '/admin/events'
+      path: '/events'
+      fullPath: '/admin/events'
+      preLoaderRoute: typeof AdminEventsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/offers': {
+      id: '/admin/offers'
+      path: '/offers'
+      fullPath: '/admin/offers'
+      preLoaderRoute: typeof AdminOffersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/parking': {
+      id: '/admin/parking'
+      path: '/parking'
+      fullPath: '/admin/parking'
+      preLoaderRoute: typeof AdminParkingRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/stores': {
+      id: '/admin/stores'
+      path: '/stores'
+      fullPath: '/admin/stores'
+      preLoaderRoute: typeof AdminStoresRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/stores/$storeId': {
+      id: '/stores/$storeId'
+      path: '/$storeId'
+      fullPath: '/stores/$storeId'
+      preLoaderRoute: typeof StoresStoreIdRouteImport
+      parentRoute: typeof StoresRoute
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminAnalyticsRoute: typeof AdminAnalyticsRoute
+  AdminEventsRoute: typeof AdminEventsRoute
+  AdminOffersRoute: typeof AdminOffersRoute
+  AdminParkingRoute: typeof AdminParkingRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminStoresRoute: typeof AdminStoresRoute
+  AdminUsersRoute: typeof AdminUsersRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminAnalyticsRoute: AdminAnalyticsRoute,
+  AdminEventsRoute: AdminEventsRoute,
+  AdminOffersRoute: AdminOffersRoute,
+  AdminParkingRoute: AdminParkingRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminStoresRoute: AdminStoresRoute,
+  AdminUsersRoute: AdminUsersRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface StoresRouteChildren {
+  StoresStoreIdRoute: typeof StoresStoreIdRoute
+}
+
+const StoresRouteChildren: StoresRouteChildren = {
+  StoresStoreIdRoute: StoresStoreIdRoute,
+}
+
+const StoresRouteWithChildren =
+  StoresRoute._addFileChildren(StoresRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
+  EventsRoute: EventsRoute,
+  FoodRoute: FoodRoute,
+  OffersRoute: OffersRoute,
+  ParkingRoute: ParkingRoute,
+  ProfileRoute: ProfileRoute,
+  StoresRoute: StoresRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
