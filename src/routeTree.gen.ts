@@ -10,33 +10,127 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EventsRouteImport } from './routes/events'
+import { Route as FoodRouteImport } from './routes/food'
+import { Route as OffersRouteImport } from './routes/offers'
+import { Route as ParkingRouteImport } from './routes/parking'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as StoresRouteImport } from './routes/stores'
+import { Route as StoresStoreIdRouteImport } from './routes/stores.$storeId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoodRoute = FoodRouteImport.update({
+  id: '/food',
+  path: '/food',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OffersRoute = OffersRouteImport.update({
+  id: '/offers',
+  path: '/offers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParkingRoute = ParkingRouteImport.update({
+  id: '/parking',
+  path: '/parking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StoresRoute = StoresRouteImport.update({
+  id: '/stores',
+  path: '/stores',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StoresStoreIdRoute = StoresStoreIdRouteImport.update({
+  id: '/$storeId',
+  path: '/$storeId',
+  getParentRoute: () => StoresRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/events': typeof EventsRoute
+  '/food': typeof FoodRoute
+  '/offers': typeof OffersRoute
+  '/parking': typeof ParkingRoute
+  '/profile': typeof ProfileRoute
+  '/stores': typeof StoresRouteWithChildren
+  '/stores/$storeId': typeof StoresStoreIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/events': typeof EventsRoute
+  '/food': typeof FoodRoute
+  '/offers': typeof OffersRoute
+  '/parking': typeof ParkingRoute
+  '/profile': typeof ProfileRoute
+  '/stores': typeof StoresRouteWithChildren
+  '/stores/$storeId': typeof StoresStoreIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/events': typeof EventsRoute
+  '/food': typeof FoodRoute
+  '/offers': typeof OffersRoute
+  '/parking': typeof ParkingRoute
+  '/profile': typeof ProfileRoute
+  '/stores': typeof StoresRouteWithChildren
+  '/stores/$storeId': typeof StoresStoreIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/events'
+    | '/food'
+    | '/offers'
+    | '/parking'
+    | '/profile'
+    | '/stores'
+    | '/stores/$storeId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/events'
+    | '/food'
+    | '/offers'
+    | '/parking'
+    | '/profile'
+    | '/stores'
+    | '/stores/$storeId'
+  id:
+    | '__root__'
+    | '/'
+    | '/events'
+    | '/food'
+    | '/offers'
+    | '/parking'
+    | '/profile'
+    | '/stores'
+    | '/stores/$storeId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EventsRoute: typeof EventsRoute
+  FoodRoute: typeof FoodRoute
+  OffersRoute: typeof OffersRoute
+  ParkingRoute: typeof ParkingRoute
+  ProfileRoute: typeof ProfileRoute
+  StoresRoute: typeof StoresRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +142,77 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/food': {
+      id: '/food'
+      path: '/food'
+      fullPath: '/food'
+      preLoaderRoute: typeof FoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offers': {
+      id: '/offers'
+      path: '/offers'
+      fullPath: '/offers'
+      preLoaderRoute: typeof OffersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parking': {
+      id: '/parking'
+      path: '/parking'
+      fullPath: '/parking'
+      preLoaderRoute: typeof ParkingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stores': {
+      id: '/stores'
+      path: '/stores'
+      fullPath: '/stores'
+      preLoaderRoute: typeof StoresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stores/$storeId': {
+      id: '/stores/$storeId'
+      path: '/$storeId'
+      fullPath: '/stores/$storeId'
+      preLoaderRoute: typeof StoresStoreIdRouteImport
+      parentRoute: typeof StoresRoute
+    }
   }
 }
 
+interface StoresRouteChildren {
+  StoresStoreIdRoute: typeof StoresStoreIdRoute
+}
+
+const StoresRouteChildren: StoresRouteChildren = {
+  StoresStoreIdRoute: StoresStoreIdRoute,
+}
+
+const StoresRouteWithChildren =
+  StoresRoute._addFileChildren(StoresRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EventsRoute: EventsRoute,
+  FoodRoute: FoodRoute,
+  OffersRoute: OffersRoute,
+  ParkingRoute: ParkingRoute,
+  ProfileRoute: ProfileRoute,
+  StoresRoute: StoresRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
